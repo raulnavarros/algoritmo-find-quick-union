@@ -1,0 +1,67 @@
+#include <iostream>
+using namespace std;
+const int CantidadIngresos = 6;
+const int CantidadElementos = 8;
+
+struct Conectividad{
+	int vector[CantidadElementos];
+
+};
+
+void Inicializar(Conectividad& conectividad);
+void Conectar(Conectividad& conectividad, int p, int q);
+bool EstanConectados(Conectividad conectividad, int p, int q);//se fija si hay una conección reflexiba o conmutativa o transitiva
+
+
+int main(){
+	Conectividad conectividad;
+	Inicializar(conectividad);
+	int p,q;
+	for(int numeroIngreso = 0;
+			numeroIngreso < CantidadIngresos;
+			++numeroIngreso)
+	{
+		cin>>p;
+		cin>>q;
+		if(EstanConectados(conectividad, p, q))
+		{
+			cout<<"-"<<endl;
+		}
+		else
+		{
+			Conectar(conectividad, p, q);
+			cout<<p<<"-"<<q<<endl;
+		}
+	}
+	return 0;
+}
+
+void Inicializar(Conectividad& conectividad)
+{
+	for(int i=0; i<CantidadElementos; ++i)
+	{
+		conectividad.vector[i] = i;
+	}
+}
+//Para entendere esta solución se tuvo en cuenta que
+//El indice son los elementos, el valor es al conjunto al que pertenecen.
+//Dos elementos estan conectados si pertenecen al mismo conjunto
+void Conectar(Conectividad& conectividad, int p, int q)
+{
+	int elementoP = conectividad.vector[p];
+	int elementoQ = conectividad.vector[q];
+	for(int i=0; i< CantidadElementos; ++i)
+	{
+		if(conectividad.vector[i] == elementoP)
+		{
+			conectividad.vector[i] = elementoQ;
+		}
+	}
+}
+
+bool EstanConectados(Conectividad conectividad, int p, int q)
+{
+	int elementoP = conectividad.vector[p];
+	int elementoQ = conectividad.vector[q];
+	return elementoP == elementoQ;
+}
