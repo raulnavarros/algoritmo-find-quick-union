@@ -16,7 +16,7 @@ struct Mazo{
 void MostrarCarta(Mazo* cartas);
 void Destruir(Mazo* carta);
 void MostrarMazo(Mazo* cartas, int cantidad);
-Mazo* CrearMazoEspanol();vo
+Mazo* CrearMazoEspanol();
 Carta* CrearMazoTruco();
 
 
