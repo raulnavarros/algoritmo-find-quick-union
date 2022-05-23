@@ -22,9 +22,9 @@ Carta* CrearMazoTruco();
 
 int main() {
 	Mazo* mazo = CrearMazoEspanol();
-    Mazo* mazoTruco = CrearMazoTruco();//implementar
+        Mazo* mazoTruco = CrearMazoTruco();//implementar
 	MostrarMazo(mazo, 48);
-    MostrarMazo(mazoTruco, 40);//implementar
+        MostrarMazo(mazoTruco, 40);//implementar
 
 	// TODO hacer que las variables mazo y mazoTructo sean de tipo Mazo
 	// y refactorizar las funciones creacionalaes para que ande todo
@@ -35,7 +35,7 @@ int main() {
 void IncializarPorPalo(Mazo* mazo, int indiceCarta, TipoPalo palo){
 	for(int i = 0 ; i < 12; ++i){
 		mazo->cartas[i+indiceCarta] = new Carta;
-		mazo->cartas[i+indiceCarta]->palo= palo;
+	        mazo->cartas[i+indiceCarta]->palo= palo;
 		mazo->cartas[i+indiceCarta]->valor = i + 1;
 	}
 }
@@ -82,15 +82,13 @@ void MostrarMazo(Mazo* mazo, int cantidad){
 }
 
 void DestruirMazoCartas(Mazo* mazo){
-    if(mazo != NULL){
-    	//delete[] mazo;
-    	for(int i=0; i < mazo->cantidadCartas; ++i){
-    		delete mazo->cartas[i];
-    	}
-        delete mazo;
-    }
+	if(mazo != NULL){
+		for(int i=0; i < mazo->cantidadCartas; ++i){
+			delete mazo->cartas[i];
+    	        }
+		delete mazo;
+        }
 }
-
 
 Mazo* CrearMazoTruco(){
 	Mazo* mazoEspanol = new Mazo[40];
